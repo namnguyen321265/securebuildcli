@@ -1,12 +1,14 @@
-function isValidParentheses(s) {
-  const stack = [];
-  const map = { "(": ")", "[": "]", "{": "}" };
-  for (const char of s) {
-    if (char in map) stack.push(char);
-    else {
-      const top = stack.pop();
-      if (map[top] !== char) return false;
+const selectionSort = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    if (minIndex !== i) {
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
     }
   }
-  return stack.length === 0;
-}
+  return arr;
+};
